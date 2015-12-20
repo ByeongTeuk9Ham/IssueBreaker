@@ -1,0 +1,26 @@
+<html>
+	<head>
+		<title>Issue Breaker</title>
+		<script src="https://cdn.socket.io/socket.io-1.3.7.js"></script>
+		<script src="/scripts/gyro.js"></script>
+		<script>
+  			var socket = io();
+  			var socket_id = window.location.pathname;
+  			socket.emit('join', socket_id);
+  			console.log('On desktop - socket id : ' + socket_id);  			
+
+  			socket.on('desktop', function(o) {
+  				console.log(o);
+  				document.body.innerHTML = document.body.innerHTML + '<p> message: x: ' +  o.x + ' y: ' + o.y + ' z: ' + o.z 
+    	+ '<br/>' + 'alpha: ' + o.alpha + ' beta: ' + o.beta + ' gamma: ' + o.gamma + '</p>'
+  			});
+			
+    		
+		</script>
+	</head>
+	<body>
+		<h1>
+			데스크탑
+		</h1>
+	</body>
+</html>

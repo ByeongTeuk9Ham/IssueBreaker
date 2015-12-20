@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/ByeongTeuk9Ham/IssueBreaker/issues"
   },
-  "homepage": "https://github.com/ByeongTeuk9Ham/IssueBreaker#readme"
+  "homepage": "https://github.com/ByeongTeuk9Ham/IssueBreaker#readme",
+  "dependencies": {
+    "express": "^4.13.3",
+    "shortid": "^2.2.4",
+    "socket.io": "^1.3.7"
+  }
 }
