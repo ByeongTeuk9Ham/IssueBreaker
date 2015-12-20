@@ -13,7 +13,7 @@ app.get('/index', function(req, res){
 });
 
 app.get('/:id', function(req, res){
-  var user_agent = req.headers['user-agent'];  
+  var user_agent = req.headers['user-agent'];
 
   if(user_agent.indexOf('Android') > -1 || user_agent.indexOf('iPhone') > -1) {
   	res.sendFile(__dirname + '/html/sample_mobile.html');
@@ -25,10 +25,10 @@ app.get('/:id', function(req, res){
 io.on('connection', function(socket){
   var _socket_id = shortid.generate();
 
-  console.log('a user connected ' + _socket_id);
+  console.log('a user connected : room - ' + _socket_id);
   socket.emit('generate', _socket_id);
 
-  socket.on('join', function(socket_id) {  	
+  socket.on('join', function(socket_id) {
   	socket.room = socket_id;
   	socket.join(socket_id);
   	console.log('join : ' + socket_id + "\n rooms " + socket.rooms);
@@ -40,11 +40,12 @@ io.on('connection', function(socket){
     console.log(socket.room + ' message: x: ' +  o.x + ' y: ' + o.y + ' z: ' + o.z 
     	+ '\n' + 'alpha: ' + o.alpha + ' beta: ' + o.beta + ' gamma: ' + o.gamma + '\n');
         
-    io.sockets.to(socket.room).emit('desktop', o);    
+    io.sockets.to(socket.room).emit('desktop', o);
   });
 
   socket.on('disconnect', function(){
-    console.log('user disconnected');
+    console.log('user disconnected : room -' + socket.room);
+    io.sockets.to(socket.room).emit('disconnected');
   });
 });
 

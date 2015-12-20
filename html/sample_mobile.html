@@ -9,10 +9,14 @@
   			socket.emit('join', socket_id);
 			console.log('On mobile - socket id : ' + socket_id);
 
+			socket.on('disconnected', function() {
+				document.getElementById('status').innerHTML = "<h1>disconnected<h1>";
+			});
+
   			gyro.startTracking(function(o) {
   				// o.x, o.y, o.z for accelerometer
 		        // o.alpha, o.beta, o.gamma for gyro
-  				socket.emit("gyro", o);       
+  				socket.emit("gyro", o);      
     		});
 
     		
@@ -22,5 +26,6 @@
 		<h1>
 			Mobile
 		</h1>
+		<p id='status'></p>
 	</body>
 </html>

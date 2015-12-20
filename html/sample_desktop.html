@@ -8,13 +8,18 @@
   			var socket_id = window.location.pathname;
   			socket.emit('join', socket_id);
   			console.log('On desktop - socket id : ' + socket_id);  			
-
+  			
   			socket.on('desktop', function(o) {
   				console.log(o);
-  				var gyro_info = document.getElementById('gyro_info'); 
+  				var gyro_info = document.getElementById('gyro_info');
   				gyro_info.innerHTML = '<p>' + Date.now() + ' message: x: ' +  o.x + ' y: ' + o.y + ' z: ' + o.z 
-    	+ '<br/>' + 'alpha: ' + o.alpha + ' beta: ' + o.beta + ' gamma: ' + o.gamma + '</p>'
+    			+ '<br/>' + 'alpha: ' + o.alpha + ' beta: ' + o.beta + ' gamma: ' + o.gamma + '</p>';
   			});
+
+  			socket.on('disconnected', function() {
+  				var gyro_info = document.getElementById('gyro_info');
+				gyro_info.innerHTML = "<h1>disconnected<h1>";
+			});
 			
     		
 		</script>
