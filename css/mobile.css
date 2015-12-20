@@ -1,0 +1,24 @@
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+}
+
+.wrap {
+	width: 100%;
+	height: 100%;
+}
+
+.controll--jump {
+	width: 100%;
+	height: 50%;
+
+	font-size: 40px;
+}
+
+.controll--defence {
+	width: 100%;
+	height: 50%;
+
+	font-size: 40px;
+}
