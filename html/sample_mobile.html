@@ -12,8 +12,7 @@
   			gyro.startTracking(function(o) {
   				// o.x, o.y, o.z for accelerometer
 		        // o.alpha, o.beta, o.gamma for gyro
-  				socket.emit("gyro", o);	  			
-  				// io.to(socket_id).emit(o):	        
+  				socket.emit("gyro", o);       
     		});
 
     		
@@ -21,7 +20,7 @@
 	</head>
 	<body>
 		<h1>
-			모바일
+			Mobile
 		</h1>
 	</body>
 </html>

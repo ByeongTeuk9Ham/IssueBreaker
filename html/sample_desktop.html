@@ -11,7 +11,8 @@
 
   			socket.on('desktop', function(o) {
   				console.log(o);
-  				document.body.innerHTML = document.body.innerHTML + '<p> message: x: ' +  o.x + ' y: ' + o.y + ' z: ' + o.z 
+  				var gyro_info = document.getElementById('gyro_info'); 
+  				gyro_info.innerHTML = '<p>' + Date.now() + ' message: x: ' +  o.x + ' y: ' + o.y + ' z: ' + o.z 
     	+ '<br/>' + 'alpha: ' + o.alpha + ' beta: ' + o.beta + ' gamma: ' + o.gamma + '</p>'
   			});
 			
@@ -20,7 +21,8 @@
 	</head>
 	<body>
 		<h1>
-			데스크탑
+			Desktop
 		</h1>
+		<p id='gyro_info'>Not start</p>
 	</body>
 </html>
